@@ -115,7 +115,7 @@ go run main.go
 The API server will be running at:
 
 ```
-http://localhost:8080
+http://localhost:6001
 ```
 
 ---
