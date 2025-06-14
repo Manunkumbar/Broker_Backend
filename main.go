@@ -4,6 +4,7 @@ import (
 	"broker-backend/controllers"
 	"broker-backend/database"
 	"broker-backend/middleware"
+	"broker-backend/utils"
 	"log"
 	"net/http"
 
@@ -20,6 +21,8 @@ func init() {
 
 func main() {
 	database.ConnectDB()
+	utils.InitCircuitBreaker()
+
 	r := gin.Default()
 
 	r.GET("/health", func(c *gin.Context) {
@@ -29,6 +32,8 @@ func main() {
 	r.POST("/signup", controllers.SignUp)
 	r.POST("/login", controllers.Login)
 	r.POST("/refresh", controllers.RefreshToken)
+
+	r.GET("/external", controllers.CallUpstream)
 
 	private := r.Group("/")
 	private.GET("/holdings", middleware.JWTMiddleware(), controllers.GetHoldings)
