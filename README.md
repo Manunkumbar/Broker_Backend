@@ -1,5 +1,4 @@
 # Broker_Backend
-# Broker_Backend
 A backend service for a broker platform to manage client holdings, trades, and user operations.  
 Built using **Go (Gin)** and **PostgreSQL**.
 
@@ -14,7 +13,7 @@ broker-backend/
 ├── models/
 ├── routes/
 ├── services/
-├── tests/
+├── test/
 ├── utils/
 ├── go.mod
 ├── go.sum
@@ -116,7 +115,7 @@ go run main.go
 The API server will be running at:
 
 ```
-http://localhost:8080
+http://localhost:6001
 ```
 
 ---
