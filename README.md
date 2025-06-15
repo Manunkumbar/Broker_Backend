@@ -13,6 +13,7 @@ broker-backend/
 ├── models/
 ├── routes/
 ├── services/
+├── test/
 ├── utils/
 ├── go.mod
 ├── go.sum
