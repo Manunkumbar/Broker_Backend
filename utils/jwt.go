@@ -41,3 +41,21 @@ func ValidateJWT(tokenStr string) (string, error) {
 
 	return email, nil
 }
+
+var jwtKey = []byte("test_secret_key")
+
+func GenerateToken(username string) (string, error) {
+	claims := &jwt.MapClaims{
+		"username": username,
+		"exp":      time.Now().Add(1 * time.Hour).Unix(),
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+
+	tokenString, err := token.SignedString(jwtKey)
+	if err != nil {
+		return "", err
+	}
+
+	return tokenString, nil
+}
